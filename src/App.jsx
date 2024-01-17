@@ -1,12 +1,13 @@
 import React from "react"
+import Burguer from "./assets/burguer.png"
 import { Container, H1, Image, SubContainer, InputLabel, Input, Button } from "./styles"
 
 const App = () => {
 
   return(
-    
+
     <Container>
-      <Image></Image>
+      <Image alt="logo-imagem" src={Burguer}/>
 
       <SubContainer>
 
