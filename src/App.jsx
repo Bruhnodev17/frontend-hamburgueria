@@ -1,6 +1,7 @@
 import React from "react"
 import Burguer from "./assets/burguer.png"
-import { Container, H1, Image, SubContainer, InputLabel, Input, Button } from "./styles"
+import { Container, H1, Image, SubContainer, InputLabel, Input, Button,User } from "./styles"
+import Trash from "./assets/trash.svg"
 
 const App = () => {
 
@@ -23,9 +24,10 @@ const App = () => {
 
         <Button>Novo Pedido</Button>
         <ul>{ users.map( user => (
-          <li key={user.id}>
-            {user.name} - {user.age} 
-          </li>
+          <User key={user.id}>
+            <p>{user.name}</p><p>{user.age} </p>
+            <button><img src={Trash} alt="latinha de lixo"/></button>
+          </User>
         ))
             }
         </ul>

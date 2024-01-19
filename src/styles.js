@@ -66,3 +66,26 @@ export const Button = styled.button`
     }
 `
 
+export const User = styled.li `
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;border-radius: 14px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #FFF;
+    margin-top: 20px;
+    padding: 20px;
+    
+    p{
+        font-size: 20px;
+        line-height: 28px;
+
+    }
+
+    button{
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+`
+
