@@ -1,11 +1,23 @@
-import React from "react"
+import React, { useState, useRef } from "react"
 import Burguer from "./assets/burguer.png"
-import { Container, H1, Image, SubContainer, InputLabel, Input, Button,User } from "./styles"
+import { Container, H1, Image, SubContainer, InputLabel, Input, Button, User } from "./styles"
 import Trash from "./assets/trash.svg"
 
 const App = () => {
 
-  const users = [{ id: Math.random(), name: "Manoel", age: 22 }, { id: Math.random(), name: "Maria", age: 18 }]
+  const [users, setUsers] = useState([])
+
+  const inputOrder = useRef()
+  const inputName = useRef()
+
+  function addNewUsers() {
+    setUsers([...users, { id: Math.random(), order: inputOrder.current.value, name: inputName.current.value }])
+  }
+
+  function deleteUser(){
+    console.log("hello")
+  }
+
 
   return (
 
@@ -17,19 +29,21 @@ const App = () => {
         <H1>Faça seu pedido!</H1>
 
         <InputLabel>Pedido:</InputLabel>
-        <Input placeholder="Pedido"></Input>
+        <Input ref={inputOrder} placeholder="Pedido"></Input>
 
         <InputLabel>Nome do Cliente:</InputLabel>
-        <Input placeholder="Nome do Cliente"></Input>
+        <Input ref={inputName} placeholder="Nome do Cliente"></Input>
 
-        <Button>Novo Pedido</Button>
-        <ul>{ users.map( user => (
+        <Button onClick={addNewUsers}>Novo Pedido</Button>
+
+        <ul>{users.map(user => (
           <User key={user.id}>
-            <p>{user.name}</p><p>{user.age} </p>
-            <button><img src={Trash} alt="latinha de lixo"/></button>
+            <p>{user.order+" - "}</p>
+            <p>{user.name}</p>
+            <button onClick={deleteUser}><img src={Trash} alt="latinha de lixo" /></button>
           </User>
         ))
-            }
+        }
         </ul>
 
       </SubContainer>
