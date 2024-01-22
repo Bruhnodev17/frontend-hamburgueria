@@ -14,8 +14,9 @@ const App = () => {
     setUsers([...users, { id: Math.random(), order: inputOrder.current.value, name: inputName.current.value }])
   }
 
-  function deleteUser(){
-    console.log("hello")
+  function deleteUser(userId){
+    const newUsers = users.filter( user => user.id !== userId )
+    setUsers(newUsers)
   }
 
 
@@ -40,7 +41,7 @@ const App = () => {
           <User key={user.id}>
             <p>{user.order+" - "}</p>
             <p>{user.name}</p>
-            <button onClick={deleteUser}><img src={Trash} alt="latinha de lixo" /></button>
+            <button onClick={() => deleteUser(user.id)}><img src={Trash} alt="latinha de lixo" /></button>
           </User>
         ))
         }
